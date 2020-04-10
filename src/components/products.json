@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "img": "https://assets.bigcartel.com/product_images/220592533/PhotoGrid_1532186785882.jpg?auto=format&fit=max&h=1000&w=1000",
+    "name": "DURAN CYCLES PATCH",
+    "price": 5
+  },
+  {
+    "id": 2,
+    "img": "https://assets.bigcartel.com/product_images/174915649/XL_roll-1.jpg?auto=format&fit=max&h=1000&w=1000",
+    "name": "MERBAG",
+    "price": 295
+  },
+  {
+    "id": 3,
+    "img": "https://assets.bigcartel.com/product_images/220592308/PhotoGrid_1532186456902.jpg?auto=format&fit=max&h=1000&w=1000",
+    "name": "DURAN CYCLES HAT",
+    "price": 20
+  },
+  {
+    "id": 4,
+    "img": "https://assets.bigcartel.com/product_images/191324771/IMG_20170107_235622_017.jpg?auto=format&fit=max&h=1000&w=1000",
+    "name": "DURAN CYCLES PHONE POUCH",
+    "price": 25
+  }
+]
