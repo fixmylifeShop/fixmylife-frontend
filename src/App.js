@@ -1,90 +1,99 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./CSS/App.css";
-import fmllogo from "./images/fixmylifelogo.png";
 import products from "./components/products.json";
-import { Switch, Route, Link } from "react-router-dom";
-import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
-import SearchIcon from "@material-ui/icons/Search";
+import { Route } from "react-router-dom";
+import { Footer, Header } from "./components/navigations/";
+import {
+  ContactPage,
+  IndividualProductPage,
+  CartPage,
+  ProductsPage,
+  Homepage,
+  InstagramPage,
+} from "./components/pages";
 
-function App(props) {
-  const [searchBar, setSearchBar] = useState("");
+function App() {
+  const [cart, setCart] = useState(false);
+  const [itemCount, setItemCount] = useState(0);
+  const [cartChange, setCartChange] = useState(false);
+
+  const getTotal = (fullCart) => {
+    let subtotal = 0;
+    fullCart.forEach((product) => {
+      let itemTotal = product.price * product.quantity;
+      subtotal = subtotal + itemTotal;
+    });
+    return subtotal;
+  };
+
+  useEffect(() => {
+    cartItems();
+    setCartChange(false);
+  }, [cartChange]);
+
+  const cartItems = () => {
+    let fullCart = [];
+    let localCart = localStorage.getItem("cart");
+
+    if (localCart) {
+      let cartStorage = localCart.split(",");
+      setItemCount(cartStorage.length);
+      cartStorage.forEach((num) => {
+        if (fullCart.find((product) => product.id == num)) {
+          fullCart.find((product) => {
+            product.id == num && product.quantity++;
+          });
+        } else {
+          let product = products.find((obj) => obj.id == num);
+          product.quantity = 1;
+          fullCart.push(product);
+        }
+      });
+      getTotal(fullCart);
+      setCart({ items: fullCart, subtotal: getTotal(fullCart) });
+      // console.log(cart);
+    } else {
+      setCart(false);
+      setItemCount(0);
+    }
+  };
 
   return (
     <div className="App">
-      <header className="App-header">
-        <nav className="navigation">
-          <div className="navLinkContainer navContentWidth">
-            <Link to="/products" className="navLinks">
-              PRODUCTS
-            </Link>
-            <Link to="/instagram" className="navLinks">
-              INSTAGRAM
-            </Link>
-            <Link to="/contact" className="navLinks">
-              CONTACT
-            </Link>
-          </div>
-          <div className="navContentWidth">
-            <Link to="/">
-              <img src={fmllogo} alt="logo" className="App-logo" />
-            </Link>
-          </div>
-
-          {/* <div className="navLeftContent navContentWidth"> */}
-
-          <div class="navContentWidth navLeftContent ">
-            <div
-              className="searchContainer"
-              onMouseEnter={() => {
-                setSearchBar("slideIn ");
-              }}
-              onMouseLeave={() => {
-                setSearchBar("hide");
-              }}
-            >
-              <input
-                type="text"
-                className={`inputSearch ${searchBar}`}
-                placeholder="Search..."
-              />
-              <div className="searchButton">
-                <SearchIcon fontSize="small" />
-              </div>
-            </div>
-
-            {/* </div> */}
-
-            <Link className="App-link" to="/cart">
-              <ShoppingCartOutlinedIcon fontSize="small" /> 0 ITEMS
-            </Link>
-          </div>
-        </nav>
-      </header>
-      <div
-        style={{
-          height: props.bannersize || "100vh",
-        }}
-        className="banner"
-      >
-        <p className="bannerTopText">FIXMYLIFE</p>
-        <p className="bannerBottomText">NEW YORK</p>
-      </div>
-
-      <div className="cardContainer">
-        {products.map((project) => {
-          return (
-            <div className="card">
-              <div>
-                </div>
-              <div className="imgcontainer">
-                <img src={project.img} className="cardImg" />
-              </div>
-              <p >{project.price}</p>
-              <p> {project.name}</p>
-            </div>
-          );
-        })}
-      </div>
+      <Header itemCount={itemCount} />
+      <Route
+        exact
+        path="/"
+        component={() => <Homepage products={products} />}
+      />
+      <Route
+        exact
+        path="/products"
+        component={() => <ProductsPage products={products} />}
+      />
+      <Route
+        exact
+        path="/cart"
+        component={() => (
+          <CartPage
+            cart={cart}
+            itemCount={itemCount}
+            setCartChange={setCartChange}
+          />
+        )}
+      />
+      <Route
+        path="/product/:id"
+        component={() => (
+          <IndividualProductPage
+            products={products}
+            setCartChange={setCartChange}
+          />
+        )}
+      />
+      <Route exact path="/contact" component={() => <ContactPage />} />
+      <Route exact path="/instagram" component={() => <InstagramPage />} />
+      <Footer />
     </div>
   );
 }

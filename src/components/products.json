@@ -3,24 +3,97 @@
     "id": 1,
     "img": "https://assets.bigcartel.com/product_images/220592533/PhotoGrid_1532186785882.jpg?auto=format&fit=max&h=1000&w=1000",
     "name": "DURAN CYCLES PATCH",
-    "price": 5
+    "price": 5,
+    "options" : [
+      ["1 Patch"],
+      ["2 Patches", 8]
+    ],
+    "description": [
+      ["Each order of patches comes with two durancycles stickers"]
+    ]
   },
   {
     "id": 2,
     "img": "https://assets.bigcartel.com/product_images/174915649/XL_roll-1.jpg?auto=format&fit=max&h=1000&w=1000",
     "name": "MERBAG",
-    "price": 295
+    "price": 295,
+    "description": [
+      ["XL BASIC BACKPACK ROLL TOP: $295.00"],
+      [
+        "+H 30 X W 16 X D 11",
+        "+EXPANDABLE FRONT POCKET",
+        "+2 SIDE POCKETS",
+        "+FRONT CARGO STRAPS",
+        "+SIDE COMPRESSION STRAPS",
+        "+RADIO/PHONE VELCRO SHOULDER STRAPS",
+        "+REINFORCED SHOULDER STRAPS",
+        "+REINFORCED DOUBLE LAYER BAG BOTTOM",
+        "+QUICK RELEASE SHOULDER STRAPS",
+        "+DOUBLE ROLL TOP CLOSURE STRAPS"
+      ],
+
+      ["EXTERIOR COLOR: BLACK", "INTERIOR COLOR: LIGHT BLUE"],
+      [
+        "MER INFO:",
+        "ALL MER PRODUCTS ARE DESIGNED, CUT, AND HAND-BUILT IN BUSHWICK BROOKLYN, NY, USA. MER GOODS ARE WATERPROOF, WEATHERPROOF AND BUILT TO LAST. MER GOODS ARE BUILT WITH ALL USA SOURCED MATERIALS. THEY ARE ENGINEERED WITH INDUSTRIAL MATERIALS TO WITHSTAND EVERYDAY USE AND THE MOST HEAVY ABUSE."
+      ]
+    ]
   },
   {
     "id": 3,
     "img": "https://assets.bigcartel.com/product_images/220592308/PhotoGrid_1532186456902.jpg?auto=format&fit=max&h=1000&w=1000",
     "name": "DURAN CYCLES HAT",
-    "price": 20
+    "price": 20,
+    "description": [["XL BASIC BACKPACK ROLL TOP: $295.00"]]
   },
   {
     "id": 4,
     "img": "https://assets.bigcartel.com/product_images/191324771/IMG_20170107_235622_017.jpg?auto=format&fit=max&h=1000&w=1000",
     "name": "DURAN CYCLES PHONE POUCH",
-    "price": 25
+    "price": 25,
+    "description": [
+      [
+        "100% cotton",
+        "Soft-structured, five-panel, low-profile",
+        "Metal eyelets",
+        "Nylon strap clip closure"
+      ]
+    ]
+  },
+  {
+    "id": 5,
+    "img": "https://assets.bigcartel.com/product_images/220592533/PhotoGrid_1532186785882.jpg?auto=format&fit=max&h=1000&w=1000",
+    "name": "DURAN CYCLES PATCH",
+    "price": 5,
+    "description": [
+      ["Each order of patches comes with two durancycles stickers"]
+    ]
+  },
+  {
+    "id": 6,
+    "img": "https://assets.bigcartel.com/product_images/220592533/PhotoGrid_1532186785882.jpg?auto=format&fit=max&h=1000&w=1000",
+    "name": "DURAN CYCLES PATCH",
+    "price": 5,
+    "description": [
+      ["Each order of patches comes with two durancycles stickers"]
+    ]
+  },
+  {
+    "id": 7,
+    "img": "https://assets.bigcartel.com/product_images/220592533/PhotoGrid_1532186785882.jpg?auto=format&fit=max&h=1000&w=1000",
+    "name": "DURAN CYCLES PATCH",
+    "price": 5,
+    "description": [
+      ["Each order of patches comes with two durancycles stickers"]
+    ]
+  },
+  {
+    "id": 8,
+    "img": "https://assets.bigcartel.com/product_images/220592533/PhotoGrid_1532186785882.jpg?auto=format&fit=max&h=1000&w=1000",
+    "name": "DURAN CYCLES PATCH",
+    "price": 5,
+    "description": [
+      ["Each order of patches comes with two durancycles stickers"]
+    ]
   }
 ]

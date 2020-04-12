@@ -3,82 +3,13 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  /* align-content: center; */
 }
 
-.App-logo {
-  height: 70px;
-  /* pointer-events: none; */
+.hidden {
+  display: none;
 }
-
-.App-header {
-  background-color: white;
-  width: 100%;
-  height: 130px;
-  /* display: flex;
-  flex-direction: column;
-  align-items: center; */
-  align-items: center;
-  /* align-content: stretch; */
-  font-size: 13px;
-  color: white;
-  position: fixed;
-  border-bottom: 2px solid #eeeeee;
-}
-.navigation {
-  height: 100%;
-  margin: auto;
-  width: 90%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.navContentWidth {
-  width: 31%;
-  /* position: relative; */
-}
-
-.navLinkContainer {
-  display: flex;
-  height: 30px;
-  align-items: center;
-}
-
-.navLinks {
-  /* margin:0; */
-  text-decoration: none;
-  color: #222222;
-  margin-right: 20px;
-}
-
-.App-link {
-  text-decoration: none;
-  color: #222222;
-  background: white;
-  padding-left: 20px;
-  z-index: 3;
-  display: flex;
-  height: 30px;
-  align-items: center;
-}
-
-.navLeftContent {
-  text-align: right;
-  justify-content: flex-end;
-  display: flex;
-  align-items: center;
-  height: 30px;
-}
-
-.searchContainer {
-  display: flex;
-}
-.searchButton {
-  z-index: 3;
-  background: white;
-  color: black;
-}
+/* banner -------------------------------------- */
 .banner {
   display: flex;
   flex-direction: column;
@@ -90,23 +21,31 @@
   background-repeat: no-repeat;
   background-position: 50% 0%;
   background-size: cover;
+  margin-bottom: -50px;
 }
-
 .bannerTopText {
   height: 130px;
   margin: 0 auto;
   font-size: 70px;
   color: white;
 }
-
 .bannerBottomText {
   height: 20px;
   margin: 0 auto;
-  width: 80px;
+  /* width: 80px; */
   padding-bottom: 30px;
   color: white;
   border-bottom: 1px solid white;
 }
+.bannerTitle {
+  font-size: x-large;
+  margin: 0 auto;
+  /* width: 80px; */
+  padding-bottom: 30px;
+  color: white;
+}
+
+/* search bar --------------------------------- */
 .inputSearch {
   outline: none;
   z-index: 1;
@@ -129,11 +68,12 @@
   margin-right: 0px;
   -webkit-transition: 2s;
 }
-
 .slideIn {
   margin-right: 100px;
   -webkit-transition: 0.3s;
 }
+
+/* products ----------------------------------- */
 
 .cardContainer {
   display: flex;
@@ -144,7 +84,7 @@
   width: 95%;
   height: 100%;
   margin: auto;
-  margin-top: -50px;
+  margin-bottom: 100px;
 }
 .card {
   /* position: relative; */
@@ -153,25 +93,224 @@
   align-content: center;
   width: 25%;
   background: white;
-  border: 1px solid blue;
-  padding: 40px ;
+  border: 1px solid #eeeeee;
+  padding: 40px;
   overflow: hidden;
   height: 400px;
+  text-decoration: none;
+  color: #222222;
   /* margin:1px; */
+}
+.card:hover .hover-message {
+  visibility: visible;
+  transition: 0.5s linear;
+  opacity: 1;
 }
 
 .imgcontainer {
   /* position: relative; */
   display: flex;
-
   align-items: center;
+  justify-content: center;
   height: 400px;
   overflow: hidden;
-  
+  color: #ffffff;
 }
 
+.hover-message {
+  visibility: hidden;
+  transition: 0.2s linear;
+  opacity: 0.3;
+  transition: 0.1s;
+  /* transform: translateX(-50%) translateY(-50%); */
+  /* margin: auto; */
+  background-color: #00b7ef;
+  min-width: 180px;
+  text-transform: uppercase;
+  padding: 24px 48px;
+  position: absolute;
+  text-align: center;
+}
 .cardImg {
-
   width: 100%;
+}
+/* instagram -------------------------- */
+.instagramContainer {
+  min-height: 200px;
+  margin: 0 auto 100px auto;
+  width: 70%;
+  background: #eeeeee;
+}
 
+/* cart------------------------ */
+
+.cartContainer {
+  margin: 0 auto 100px auto;
+  width: 50%;
+  min-height: 150px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cartContent {
+  width: 100%;
+}
+.emptyCartText {
+  font-size: 1rem;
+}
+.emptyCartText a {
+  text-decoration: none;
+  color: red;
+}
+.cartCard {
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+  color: black;
+  display: flex;
+  border: 1px solid #eeeeee;
+}
+.cartCardImageContainer {
+  width: 100px;
+  height: 100px;
+  /* overflow: hidden; */
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  border-right: 1px solid #eeeeee;
+}
+.cartCardImageContainer button {
+  border: none;
+  display: flex;
+  margin: 5px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  justify-content: center;
+  background: white;
+  border-radius: 100%;
+  color: black;
+  cursor: pointer;
+}
+
+.cartCardDescription {
+  /* width: 70%; */
+  text-align: left;
+  padding: 0 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.cartCardCurrency {
+  margin: 0;
+}
+.cartCardName {
+  margin: 0;
+}
+
+.cartCardQuantityContainer {
+  display: flex;
+  float: right;
+  position: relative;
+}
+
+.cartSubtotal {
+  height: 75px;
+  background: black;
+  width: 100%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cartOptions {
+  height: 50px;
+  /* background: black; */
+  display: flex;
+  width: 100%;
+}
+.cartOptions button {
+  width: 50%;
+  color: white;
+  border: none;
+  opacity: 1;
+}
+
+.cartOptions button:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.cartOptions button:first-child {
+  background-color: #aaaaaa;
+}
+.cartOptions button:last-child {
+  background: #00b7ef;
+}
+
+/* product page ------------- */
+
+.productContainer {
+  margin: -150px auto 100px auto;
+  width: 95%;
+  min-height: 200px;
+  max-height: 80vh;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+.productImageContainer {
+  width: 60%;
+  /* min-height:600px; */
+  height: 100%;
+  max-height: 80%;
+  border-right: 2px solid #eeeeee;
+  /* height:100%; */
+  /* border: 1px solid #eeeeee; */
+}
+
+.productImageContainer img {
+  width: 80%;
+  padding: 30px;
+  max-height: 50%;
+}
+.productInfoContainer {
+  width: 30%;
+  margin: auto;
+  /* height:100vh; */
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.product-price-title {
+  /* padding:10px 5% 0 5% ; */
+  /* margin: 0 auto; */
+  width: 100%;
+  text-align: left;
+}
+
+.descriptionContainer {
+  display: flex;
+  flex-direction: column;
+  /* height:100%; */
+}
+
+.descriptionParagraph {
+  margin: 3px 0;
+  font-size: 0.7rem;
+  text-align: left;
+}
+.paragraphLine {
+  margin: 0;
 }
