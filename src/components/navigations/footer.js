@@ -36,8 +36,8 @@ export default function Footer() {
 
         <div className="footerLinksContainer">
           <p>PAGES</p>
-          {anchorLink("Instagram", "https://www.instagram.com/fixmylife")}
-          {anchorLink("Youtube", "https://www.instagram.com/fixmylife")}
+          {anchorLink("Instagram", "https://www.instagram.com/fixmylifenyc")}
+          {anchorLink("Youtube", "https://www.youtube.com/grving")}
           {anchorLink("Portfolio", "https://www.duranirving.com")}
           {anchorLink("Contact", "/contact", true)}
         </div>
