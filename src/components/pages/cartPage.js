@@ -2,13 +2,22 @@ import React, { useState } from "react";
 import Banner from "../banner.js";
 import { Link } from "react-router-dom";
 import Currency from "../currency.js";
-import Allproducts from "../allProducts";
 import { useHistory } from "react-router-dom";
 import CancelIcon from "@material-ui/icons/Cancel";
+import PaypalCheckoutButton from "../paypal/paypal";
+import Dialog from "@material-ui/core/Dialog";
 
 export default function CartPage(props) {
   const [quantity, setQuantity] = useState();
+  const [open, setOpen] = useState(false);
   let history = useHistory();
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const editCart = (id) => {
     let array = [];
@@ -18,12 +27,11 @@ export default function CartPage(props) {
       .filter((num) => num != id)
       .forEach((num) => {
         if (num) {
-          array.push(Number(num));
+          array.push(num);
         }
       });
     return array;
   };
-
   const deleteItem = (id) => {
     if (props.cart.items.length <= 1) {
       localStorage.removeItem("cart");
@@ -34,12 +42,9 @@ export default function CartPage(props) {
     }
     props.setCartChange(true);
   };
-
-  console.log(quantity);
   const handleChange = (e) => {
     setQuantity(e.target.value);
   };
-
   const editQuantity = (id, count) => {
     if (Number.isInteger(parseInt(count))) {
       let array = editCart(id);
@@ -49,7 +54,6 @@ export default function CartPage(props) {
       props.setCartChange(true);
     }
   };
-
   const card = (product) => {
     return (
       <div className="cartCard">
@@ -65,14 +69,15 @@ export default function CartPage(props) {
           <div>
             <p className="cartCardCurrency">{Currency(product.price)}</p>
             <p className="cartCardName"> {product.name.toUpperCase()}</p>
-            <p className="cartCartOption"> 3</p>
+            <p className="cartCartOption">
+              {product.choice ? product.choice : ""}
+            </p>
           </div>
         </div>
         <div className="cartCardQuantityContainer">
           <form
             className="quantityContainer"
             onSubmit={() => editQuantity(product.id, quantity || product.id)}
-            
           >
             <span>QTY. </span>
             <input
@@ -108,7 +113,7 @@ export default function CartPage(props) {
       );
     }
   };
-  console.log(props.cart.subtotal);
+
   return (
     <div>
       <Banner title="Cart" />
@@ -125,7 +130,18 @@ export default function CartPage(props) {
           >
             CONTINUE SHOPPING
           </button>
-          <button>CHECKOUT</button>
+          {/* <CustomizedDialogs total={props.cart.subtotal} /> */}
+          <button onClick={handleClickOpen}>CHECKOUT</button>
+          <Dialog
+            onClose={handleClose}
+            // aria-labelledby="customized-dialog-title"
+            open={open}
+          >
+            <PaypalCheckoutButton
+              total={props.cart.subtotal}
+              handleClose={handleClose}
+            />
+          </Dialog>
         </div>
       </div>
     </div>

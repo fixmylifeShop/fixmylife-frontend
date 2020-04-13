@@ -5,7 +5,7 @@
     "name": "DURAN CYCLES PATCH",
     "price": 5,
     "options" : [
-      ["1 Patch"],
+      ["1 Patch", 5],
       ["2 Patches", 8]
     ],
     "description": [
@@ -51,6 +51,10 @@
     "img": "https://assets.bigcartel.com/product_images/191324771/IMG_20170107_235622_017.jpg?auto=format&fit=max&h=1000&w=1000",
     "name": "DURAN CYCLES PHONE POUCH",
     "price": 25,
+    "options" : [
+      ["red"],
+      ["black"]
+    ],
     "description": [
       [
         "100% cotton",

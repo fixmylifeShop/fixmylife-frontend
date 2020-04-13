@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./CSS/App.css";
 import products from "./components/products.json";
-import { Route } from "react-router-dom";
+import { Route, useLocation } from "react-router-dom";
 import { Footer, Header } from "./components/navigations/";
 import {
   ContactPage,
@@ -16,6 +16,13 @@ function App() {
   const [cart, setCart] = useState(false);
   const [itemCount, setItemCount] = useState(0);
   const [cartChange, setCartChange] = useState(false);
+  const [search, setSearch] = useState(false);
+  const { pathname } = useLocation();
+  console.log(search);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   const getTotal = (fullCart) => {
     let subtotal = 0;
@@ -38,29 +45,42 @@ function App() {
     if (localCart) {
       let cartStorage = localCart.split(",");
       setItemCount(cartStorage.length);
-      cartStorage.forEach((num) => {
-        if (fullCart.find((product) => product.id == num)) {
+      console.log(localCart);
+
+      cartStorage.forEach((id) => {
+        if (fullCart.find((product) => product.id == id)) {
           fullCart.find((product) => {
-            product.id == num && product.quantity++;
+            product.id == id && product.quantity++;
           });
         } else {
-          let product = products.find((obj) => obj.id == num);
-          product.quantity = 1;
-          fullCart.push(product);
+          let product = products.find((obj) => obj.id == id);
+          if (product) {
+            product.quantity = 1;
+            fullCart.push(product);
+          }
         }
       });
+
       getTotal(fullCart);
       setCart({ items: fullCart, subtotal: getTotal(fullCart) });
-      // console.log(cart);
+      console.log(fullCart);
     } else {
       setCart(false);
       setItemCount(0);
     }
   };
 
+  // const searchProducts = () => {
+  //   products.name.toLowerCase()
+  //   if (search !== "" && product.name.indexOf( search ) === -1) {
+  //     return null 
+  //   }
+
+  // }
+
   return (
     <div className="App">
-      <Header itemCount={itemCount} />
+      <Header itemCount={itemCount} setSearch={setSearch} />
       <Route
         exact
         path="/"
@@ -69,7 +89,11 @@ function App() {
       <Route
         exact
         path="/products"
-        component={() => <ProductsPage products={products} />}
+        component={() => <ProductsPage products={products}/>}
+      />
+      <Route
+        path="/search"
+        component={() => <ProductsPage products={products} search={search}/>}
       />
       <Route
         exact

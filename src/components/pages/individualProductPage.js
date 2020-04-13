@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Banner from "../banner.js";
 import { useParams, useHistory } from "react-router-dom";
 import currency from "../currency";
@@ -11,36 +11,34 @@ export default function IndividualProductPage(props) {
 
   const addToCart = () => {
     let localCart = localStorage.getItem("cart");
-    if (localStorage.getItem("cart")) {
-      localStorage.setItem("cart", `${localCart},${product.id}`);
+    let productOption = id;
+    // if (product.options) {
+    //   productOption = id + "o" + selectOption;
+    // }
+
+    if (localCart) {
+      localStorage.setItem("cart", `${localCart},${productOption}`);
     } else {
-      localStorage.setItem("cart", product.id);
+      localStorage.setItem("cart", productOption);
     }
     props.setCartChange(true);
     history.push("/cart");
   };
 
-  // const line = (description) => {
-  //   return (
-  //     <div>
-  //       {description.map((line) => {
-  //         return <p>{line}</p>;
-  //       })}
-  //     </div>
-  //   );
-  // };
+  useEffect(() => {
+    if (product.options && !selectOption) {
+      setSelectOption(0);
+    }
+  });
 
   const options = () => {
     if (product.options && product.options.length > 1) {
-      console.log(product.options[1][1]);
-      const option = product.options;
+      const options = product.options;
       return (
-        <select>
-          {option.map((choice, index) => {
-            console.log(choice);
-
+        <select onChange={(event) => setSelectOption(event.target.value)}>
+          {options.map((choice, index) => {
             return (
-              <option onClick={() => setSelectOption(index)}>
+              <option value={index}>
                 {choice[0]} {choice[1] ? " - " + currency(choice[1]) : ""}
               </option>
             );
@@ -49,7 +47,6 @@ export default function IndividualProductPage(props) {
       );
     }
   };
-  options();
   return (
     <div>
       <Banner />
@@ -60,16 +57,16 @@ export default function IndividualProductPage(props) {
 
         <div className="productInfoContainer">
           <div className="product-price-title">
-            <h3>{currency(product.price)}</h3>
-            <h4>{product.name.toUpperCase()}</h4>
+            <p className="product-price" >{currency(product.price)}</p>
+            <p className="product-name" >{product.name.toUpperCase()}</p>
           </div>
-          {options()}
-          <button
+          {/* {options()} */}
+          <button className="addToCartButton"
             onClick={() => {
               addToCart();
             }}
           >
-            buy
+            ADD TO CART
           </button>
           <div className="descriptionContainer">
             {product.description.map((description, index) => {

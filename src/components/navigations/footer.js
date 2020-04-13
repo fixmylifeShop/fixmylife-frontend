@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "../../CSS/footer.css";
 import InstagramIcon from "@material-ui/icons/Instagram";
 
-
 export default function Footer() {
   const anchorLink = (name, link, local, icon) => {
     let space = `${icon ? "anchorSpace" : ""}`;
@@ -11,7 +10,7 @@ export default function Footer() {
       return (
         <Link to={link}>
           {icon}
-          <span className={space}>{name}</span>
+          <span className={space}> {name}</span>
         </Link>
       );
     } else {
@@ -27,33 +26,33 @@ export default function Footer() {
   return (
     <footer>
       <div className="footerTopicContainer">
-        <div className="footerLinksContainer">
+        {/* <div className="footerLinksContainer">
           <p>PRODUCTS</p>
-          {anchorLink("Messenger Bags", "instagram.com/fixmylife")}
+          {anchorLink("Messenger Bags", "instagram.com/fixmylife", true)}
           {anchorLink("Clothing", "instagram.com/fixmylife")}
           {anchorLink("Accessories", "instagram.com/fixmylife")}
           {anchorLink("Duran Cycles", "instagram.com/fixmylife")}
-        </div>
+        </div> */}
 
         <div className="footerLinksContainer">
           <p>PAGES</p>
-          {anchorLink("Instagram", "instagram.com/fixmylife")}{" "}
-          {anchorLink("Youtube", "instagram.com/fixmylife")}
-          {anchorLink("Portfolio", "instagram.com/fixmylife")}
-          {anchorLink("Contact", "instagram.com/fixmylife")}
+          {anchorLink("Instagram", "https://www.instagram.com/fixmylife")}
+          {anchorLink("Youtube", "https://www.instagram.com/fixmylife")}
+          {anchorLink("Portfolio", "https://www.duranirving.com")}
+          {anchorLink("Contact", "/contact", true)}
         </div>
         <div className="footerLinksContainer">
           <p>SOCIAL</p>
           {anchorLink(
             "Instagram",
-            "instagram.com/fixmylife",
+            "https://www.instagram.com/fixmylifenyc",
             false,
             <InstagramIcon fontSize="small" />
           )}
         </div>
       </div>
-      <div className="footer feature">
-        <p>ddddd</p>
+      <div className="footerFeature">
+        <a href="https://www.duranirving.com">BY IRVING DURAN</a>
       </div>
     </footer>
   );
