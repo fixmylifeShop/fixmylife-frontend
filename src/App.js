@@ -36,7 +36,7 @@ function App() {
   useEffect(() => {
     cartItems();
     setCartChange(false);
-  }, [cartChange]);
+  }, [cartChange, localStorage.getItem("cart")]);
 
   const cartItems = () => {
     let fullCart = [];
@@ -73,7 +73,7 @@ function App() {
   // const searchProducts = () => {
   //   products.name.toLowerCase()
   //   if (search !== "" && product.name.indexOf( search ) === -1) {
-  //     return null 
+  //     return null
   //   }
 
   // }
@@ -89,11 +89,11 @@ function App() {
       <Route
         exact
         path="/products"
-        component={() => <ProductsPage products={products}/>}
+        component={() => <ProductsPage products={products} />}
       />
       <Route
         path="/search"
-        component={() => <ProductsPage products={products} search={search}/>}
+        component={() => <ProductsPage products={products} search={search} />}
       />
       <Route
         exact

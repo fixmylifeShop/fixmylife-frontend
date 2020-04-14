@@ -57,6 +57,7 @@ let history = useHistory();
         props.handleClose()
         console.log(response);
         localStorage.removeItem("cart")
+        props.setPurchaseComplete(true)
         // history.push("/products")
         // alert(`
         // Payment was successfully processed, ID: ${response.id}`)

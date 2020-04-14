@@ -10,6 +10,7 @@ import Dialog from "@material-ui/core/Dialog";
 export default function CartPage(props) {
   const [quantity, setQuantity] = useState();
   const [open, setOpen] = useState(false);
+  const [purchaseComplete, setPurchaseComplete] = useState();
   let history = useHistory();
 
   const handleClickOpen = () => {
@@ -54,6 +55,7 @@ export default function CartPage(props) {
       props.setCartChange(true);
     }
   };
+
   const card = (product) => {
     return (
       <div className="cartCard">
@@ -100,10 +102,18 @@ export default function CartPage(props) {
     );
   };
   const cartContent = () => {
-    if (props.cart.items) {
+    if (props.cart.items && localStorage.getItem("cart")) {
       return props.cart.items.map((product) => {
         return card(product);
       });
+    }
+    if (purchaseComplete) {
+      return (
+        <p className="emptyCartText">
+          Thank your for your order.
+          {/* <Link to="/products"> Return to </Link>. */}
+        </p>
+      );
     } else {
       return (
         <p className="emptyCartText">
@@ -119,29 +129,38 @@ export default function CartPage(props) {
       <Banner title="Cart" />
       <div className="cartContainer">
         {cartContent()}
-        <div className={props.cart.items ? "cartSubtotal" : "hidden"}>
-          SUBTOTAL {Currency(props.cart.subtotal)}
-        </div>
-        <div className={props.cart.items ? "cartOptions" : "hidden"}>
-          <button
-            onClick={() => {
-              history.push("/products");
-            }}
-          >
-            CONTINUE SHOPPING
-          </button>
-          {/* <CustomizedDialogs total={props.cart.subtotal} /> */}
-          <button onClick={handleClickOpen}>CHECKOUT</button>
-          <Dialog
-            onClose={handleClose}
-            // aria-labelledby="customized-dialog-title"
-            open={open}
-          >
-            <PaypalCheckoutButton
-              total={props.cart.subtotal}
-              handleClose={handleClose}
-            />
-          </Dialog>
+        <div
+          className={
+            props.cart.items && localStorage.getItem("cart")
+              ? "cartTotalCheckout"
+              : "hidden"
+          }
+        >
+          <div className="cartSubtotal">
+            SUBTOTAL {Currency(props.cart.subtotal)}
+          </div>
+          <div className="cartOptions">
+            <button
+              onClick={() => {
+                history.push("/products");
+              }}
+            >
+              CONTINUE SHOPPING
+            </button>
+            {/* <CustomizedDialogs total={props.cart.subtotal} /> */}
+            <button onClick={handleClickOpen}>CHECKOUT</button>
+            <Dialog
+              onClose={handleClose}
+              // aria-labelledby="customized-dialog-title"
+              open={open}
+            >
+              <PaypalCheckoutButton
+                total={props.cart.subtotal}
+                handleClose={handleClose}
+                setPurchaseComplete={setPurchaseComplete}
+              />
+            </Dialog>
+          </div>
         </div>
       </div>
     </div>

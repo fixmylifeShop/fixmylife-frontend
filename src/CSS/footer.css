@@ -37,25 +37,23 @@ footer a {
   padding: 5px 0;
   color: #5a5a5a;
   text-decoration: none;
-  display:flex;
+  display: flex;
   align-items: center;
 }
 footer a :hover {
-color:white
+  color: white;
 }
 
-.anchorSpace{
-    margin-left: 5px;
+.anchorSpace {
+  margin-left: 5px;
 }
 
-.footerFeature{
-
-/* width:200px; */
-
+.footerFeature {
+  /* width:200px; */
 }
 .footerFeature a {
   background: rgb(255, 255, 255);
-  padding:5px;
+  padding: 5px;
   font-weight: bold;
   border-radius: 5px;
 }
@@ -63,3 +61,12 @@ color:white
 /* .footerFeature a :hover {
   background:rgb(243, 238, 238)
   } */
+
+@media only screen and (max-width: 800px) {
+}
+
+@media only screen and (max-width: 670px) {
+  footer {
+    display: none;
+  }
+}

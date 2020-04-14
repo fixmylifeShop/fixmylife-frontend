@@ -15,7 +15,7 @@ export default function Footer() {
       );
     } else {
       return (
-        <a href={link}>
+        <a href={link} target="_blank">
           {icon}
           <span className={space}>{name}</span>
         </a>
@@ -52,7 +52,9 @@ export default function Footer() {
         </div>
       </div>
       <div className="footerFeature">
-        <a href="https://www.duranirving.com">BY IRVING DURAN</a>
+        <a href="https://www.duranirving.com" target="_blank">
+          BY IRVING DURAN
+        </a>
       </div>
     </footer>
   );

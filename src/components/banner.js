@@ -1,13 +1,15 @@
 import React from "react";
 
 export default function Banner(props) {
+  const mobilePageBanner = props.title ? "mobilePageBanner" : "";
+
   const location = () => {
     if (props.home) {
       return (
         <div
-          style={{
-            height: "100vh",
-          }}
+          // style={{
+          //   height: "100vh",
+          // }}
           className="banner"
         >
           <p className="bannerTopText">FIXMYLIFE</p>
@@ -17,10 +19,7 @@ export default function Banner(props) {
     } else {
       return (
         <div
-          style={{
-            height: "40vh",
-          }}
-          className="banner"
+          className={`banner ${mobilePageBanner}`}
         >
           {props.title ? (
             <p className="bannerTitle">{props.title.toUpperCase()}</p>

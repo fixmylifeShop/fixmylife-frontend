@@ -23,6 +23,9 @@
   background-size: cover;
   margin-bottom: -50px;
 }
+.mobilePageBanner {
+  height: 40vh;
+}
 .bannerTopText {
   height: 130px;
   margin: 0 auto;
@@ -45,6 +48,35 @@
   color: white;
 }
 
+@media only screen and (max-width: 800px) {
+  .banner {
+    margin-top: 80px;
+    margin-bottom: 0px;
+  }
+  .mobilePageBanner {
+    height: 50vh;
+    margin-bottom: -100px;
+  }
+}
+
+@media only screen and (max-width: 670px) {
+  /* .banner {
+    height: 50vh;
+    
+  } */
+  .mobilePageBanner {
+    display: none;
+  }
+  .bannerTopText {
+    height: 80px;
+    font-size: 9vw;
+    color: white;
+  }
+  .bannerTitle {
+    display: none;
+  }
+}
+
 /* products ----------------------------------- */
 
 .cardContainer {
@@ -59,10 +91,11 @@
   margin-bottom: 100px;
 }
 .card {
-  /* position: relative; */
   display: flex;
   flex-direction: column;
   align-content: center;
+  min-width: 300px;
+  max-width: 400px;
   width: 25%;
   background: white;
   border: 1px solid #eeeeee;
@@ -71,7 +104,6 @@
   height: 400px;
   text-decoration: none;
   color: #222222;
-  /* margin:1px; */
 }
 .card:hover .hover-message {
   visibility: visible;
@@ -106,12 +138,50 @@
 .cardImg {
   width: 100%;
 }
+
+@media only screen and (max-width: 800px) {
+  .cardContainer {
+    width: 100%;
+    
+  }
+  .card {
+    min-width: 40px;
+    max-width: 500px;
+    width: 35%;
+    height: 300px;
+  }
+}
+
+@media only screen and (max-width: 670px) {
+  .cardContainer {
+    margin-bottom: 0px;
+  }
+  .card {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    min-height: 550px;
+    justify-content: center;
+  }
+}
+
 /* instagram -------------------------- */
 .instagramContainer {
   min-height: 200px;
   margin: 0 auto 100px auto;
   width: 70%;
   background: #eeeeee;
+}
+
+@media only screen and (max-width: 800px) {
+  .instagramContainer {
+    min-height: 200px;
+    margin: 80px auto 100px auto;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 670px) {
 }
 
 /* cart------------------------ */
@@ -189,7 +259,9 @@
   margin: 0;
   opacity: 0.5;
 }
-
+.cartTotalCheckout {
+  width: 100%;
+}
 .cartSubtotal {
   height: 75px;
   background: black;
@@ -226,12 +298,8 @@
 }
 
 .cartCardQuantityContainer {
-  /* width: 100%; */
-  /* right:-10%; */
   float: right;
   margin-right: 20px;
-  /* align-self: flex-end; */
-  /* flex-grow: 1; */
 }
 
 .quantityContainer {
@@ -263,6 +331,79 @@
   outline: none;
   border: none;
   color: #222222;
+}
+
+@media only screen and (max-width: 800px) {
+  .cartContainer {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 670px) {
+  .cartContainer {
+    justify-content: flex-start;
+    margin: 0 auto 0 auto;
+    padding-top: 80px;
+    padding-bottom: 125px;
+    width: 100%;
+    min-height: 150px;
+  }
+  .cartCard {
+    width: 100%;
+    height: 200px;
+  }
+  .cartCardImageContainer {
+    /* width: 200px; */
+    min-width: 35%;
+    background-size: 130%;
+    background-position: 50%;
+    border-right: 2px solid #eeeeee;
+  }
+  .cartCardDescription {
+    padding: 0px 10px;
+  }
+  .cartCardQuantityContainer {
+    float: right;
+    margin-right: 0px;
+    border-left: 2px solid #eeeeee;
+    text-align: center;
+  }
+  .quantityContainer {
+    border: none;
+    flex-direction: column;
+  }
+  .quantityContainer span {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: large;
+  }
+  .quantityContainer input {
+    margin-top: 10px;
+    text-align: center;
+    width: 100%;
+    font-size: large;
+  }
+  .cartSubtotal {
+    height: 75px;
+    background: black;
+    width: 100%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cartOptions {
+    height: 50px;
+    /* background: black; */
+    display: flex;
+    width: 100%;
+  }
+  .cartTotalCheckout {
+    position: fixed;
+    bottom: 0px; 
+  }
 }
 
 /* product page ------------- */
@@ -357,6 +498,12 @@
   margin: 0;
 }
 
+@media only screen and (max-width: 800px) {
+}
+
+@media only screen and (max-width: 670px) {
+}
+
 /* contact form ---------------- */
 
 .contactAlertMessage {
@@ -367,12 +514,11 @@
   justify-content: center;
 }
 .contactAlertMessage h5 {
-color:white;
-margin: auto;
+  color: white;
+  margin: auto;
 }
 .contactForm {
   width: 100%;
-  
 }
 .contactformInputLine {
   /* width: 100%; */
@@ -403,9 +549,9 @@ margin: auto;
   font-size: x-large;
 }
 
-.formButton{
+.formButton {
   background: #00b7ef;
-  width:100%;
+  width: 100%;
   height: 50px;
   color: white;
   border: none;
@@ -417,4 +563,10 @@ margin: auto;
 .formButton:hover {
   opacity: 0.8;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 800px) {
+}
+
+@media only screen and (max-width: 670px) {
 }

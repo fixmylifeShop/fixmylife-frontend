@@ -1,6 +1,7 @@
 .App-logo {
   height: 70px;
   /* pointer-events: none; */
+  margin: auto;
 }
 
 .App-header {
@@ -73,8 +74,42 @@
   background: white;
   color: black;
 }
-.searchButton{
+.searchButton {
   cursor: pointer;
+}
+
+@media only screen and (max-width: 800px) {
+  .navigation {
+    width: 100%;
+    margin: 0;
+  }
+  .navLinkContainer {
+    display: none;
+  }
+  .navLeftContent {
+    display: none;
+  }
+  .navContentWidth {
+    margin: auto;
+  }
+}
+
+@media only screen and (max-width: 670px) {
+  .App-header {
+    height:80px;
+  }
+  .navContentWidth {
+    /* width: 70px; */
+    height: 50px;
+  }
+  .navContentWidth a {
+    /* width: 100%; */
+    height: 100%;
+  }
+  .navContentWidth a img {
+    /* width: 100%; */
+    height: 100%;
+  }
 }
 
 /* search bar --------------------------------- */
