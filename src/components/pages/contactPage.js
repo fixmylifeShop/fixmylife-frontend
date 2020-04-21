@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import Banner from "../banner.js";
-import emailjs from "emailjs-com";
+import axios from "axios";
 
 export default function ContactPage() {
   const [contactForm, setContactForm] = useState({
-    send_to: "ijd.irving@gmail.com",
-    from_name: "",
-    from_email: "",
-    subject_html: "",
-    message_html: "",
+    to: "ijd.irving@gmail.com",
+    url: window.location.hostname,
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
   const [error, setError] = useState(false);
   const [emailSent, setEmailSent] = useState(false);
@@ -28,18 +29,16 @@ export default function ContactPage() {
       window.scrollTo(0, 0);
       setError(true);
     } else {
-      emailjs
-        .send(
-          "default_service",
-          "template_i9cjESpB",
-          contactForm,
-          "user_pCsvsEqUSdcnPkO6MObCh"
+      axios
+        .post(
+          `https://fixmylife-next-api.herokuapp.com/api/mailer/`,
+          contactForm
         )
         .then(
           (response) => {
             window.scrollTo(0, 0);
             setEmailSent(true);
-            console.log("SUCCESS!", response.status, response.text);
+            console.log("SUCCESS!", response);
           },
           (err) => {
             console.log("FAILED...", err);
@@ -66,19 +65,19 @@ export default function ContactPage() {
 
             <div className="contactformInputLine">
               <p>Name</p>
-              <input name="from_name" onChange={onChange} />
+              <input name="name" onChange={onChange} />
             </div>
             <div className="contactformInputLine">
               <p>Email</p>
-              <input name="from_email" onChange={onChange} />
+              <input name="email" onChange={onChange} />
             </div>
             <div className="contactformInputLine">
               <p>SUBJECT</p>
-              <input name="subject_html" onChange={onChange} />
+              <input name="subject" onChange={onChange} />
             </div>
             <div className="contactformInputLine">
               <p>MESSAGE</p>
-              <textarea name="message_html" onChange={onChange} />
+              <textarea name="message" onChange={onChange} />
             </div>
             <button className="formButton">SEND MESSAGE</button>
           </form>

@@ -75,7 +75,7 @@ export default function Header(props) {
         </div>
       </nav>
       <div>
-        ff
+    
       </div>
     </header>
   );
