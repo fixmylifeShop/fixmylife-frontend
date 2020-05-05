@@ -1,8 +1,8 @@
 [
   {
     "id": 1,
-    "img": "https://assets.bigcartel.com/product_images/220592533/PhotoGrid_1532186785882.jpg?auto=format&fit=max&h=1000&w=1000",
-    "name": "DURAN CYCLES PATCH",
+    "image": "https://assets.bigcartel.com/product_images/220592533/PhotoGrid_1532186785882.jpg?auto=format&fit=max&h=1000&w=1000",
+    "product_name": "DURAN CYCLES PATCH",
     "price": 5,
     "options" : [
       ["1 Patch", 5],
@@ -14,8 +14,8 @@
   },
   {
     "id": 2,
-    "img": "https://assets.bigcartel.com/product_images/174915649/XL_roll-1.jpg?auto=format&fit=max&h=1000&w=1000",
-    "name": "MERBAG",
+    "image": "https://assets.bigcartel.com/product_images/174915649/XL_roll-1.jpg?auto=format&fit=max&h=1000&w=1000",
+    "product_name": "MERBAG",
     "price": 295,
     "description": [
       ["XL BASIC BACKPACK ROLL TOP: $295.00"],
@@ -41,15 +41,15 @@
   },
   {
     "id": 3,
-    "img": "https://assets.bigcartel.com/product_images/220592308/PhotoGrid_1532186456902.jpg?auto=format&fit=max&h=1000&w=1000",
-    "name": "DURAN CYCLES HAT",
+    "image": "https://assets.bigcartel.com/product_images/220592308/PhotoGrid_1532186456902.jpg?auto=format&fit=max&h=1000&w=1000",
+    "product_name": "DURAN CYCLES HAT",
     "price": 20,
     "description": [["XL BASIC BACKPACK ROLL TOP: $295.00"]]
   },
   {
     "id": 4,
-    "img": "https://assets.bigcartel.com/product_images/191324771/IMG_20170107_235622_017.jpg?auto=format&fit=max&h=1000&w=1000",
-    "name": "DURAN CYCLES PHONE POUCH",
+    "image": "https://assets.bigcartel.com/product_images/191324771/image_20170107_235622_017.jpg?auto=format&fit=max&h=1000&w=1000",
+    "product_name": "DURAN CYCLES PHONE POUCH",
     "price": 25,
     "options" : [
       ["red"],
@@ -66,8 +66,8 @@
   },
   {
     "id": 5,
-    "img": "https://assets.bigcartel.com/product_images/220592533/PhotoGrid_1532186785882.jpg?auto=format&fit=max&h=1000&w=1000",
-    "name": "DURAN CYCLES PATCH",
+    "image": "https://assets.bigcartel.com/product_images/220592533/PhotoGrid_1532186785882.jpg?auto=format&fit=max&h=1000&w=1000",
+    "product_name": "DURAN CYCLES PATCH",
     "price": 5,
     "description": [
       ["Each order of patches comes with two durancycles stickers"]
@@ -75,8 +75,8 @@
   },
   {
     "id": 6,
-    "img": "https://assets.bigcartel.com/product_images/220592533/PhotoGrid_1532186785882.jpg?auto=format&fit=max&h=1000&w=1000",
-    "name": "DURAN CYCLES PATCH",
+    "image": "https://assets.bigcartel.com/product_images/220592533/PhotoGrid_1532186785882.jpg?auto=format&fit=max&h=1000&w=1000",
+    "product_name": "DURAN CYCLES PATCH",
     "price": 5,
     "description": [
       ["Each order of patches comes with two durancycles stickers"]
@@ -84,8 +84,8 @@
   },
   {
     "id": 7,
-    "img": "https://assets.bigcartel.com/product_images/220592533/PhotoGrid_1532186785882.jpg?auto=format&fit=max&h=1000&w=1000",
-    "name": "DURAN CYCLES PATCH",
+    "image": "https://assets.bigcartel.com/product_images/220592533/PhotoGrid_1532186785882.jpg?auto=format&fit=max&h=1000&w=1000",
+    "product_name": "DURAN CYCLES PATCH",
     "price": 5,
     "description": [
       ["Each order of patches comes with two durancycles stickers"]
@@ -93,8 +93,8 @@
   },
   {
     "id": 8,
-    "img": "https://assets.bigcartel.com/product_images/220592533/PhotoGrid_1532186785882.jpg?auto=format&fit=max&h=1000&w=1000",
-    "name": "DURAN CYCLES PATCH",
+    "image": "https://assets.bigcartel.com/product_images/220592533/PhotoGrid_1532186785882.jpg?auto=format&fit=max&h=1000&w=1000",
+    "product_name": "DURAN CYCLES PATCH",
     "price": 5,
     "description": [
       ["Each order of patches comes with two durancycles stickers"]

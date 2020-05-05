@@ -17,10 +17,15 @@
   height: 100vh;
   margin-top: 110px;
   width: 100%;
-  background-image: url("../images/background.jpg");
+  background-color: red; /* For browsers that do not support gradients */
+  background-image: linear-gradient(
+    rgb(104, 38, 38),
+    rgb(0, 0, 0)
+  ); /* Standard syntax (must be last) */
+  /* background-image: url("../images/background.jpg");
   background-repeat: no-repeat;
   background-position: 50% 0%;
-  background-size: cover;
+  background-size: cover; */
   margin-bottom: -50px;
 }
 .mobilePageBanner {
@@ -142,7 +147,6 @@
 @media only screen and (max-width: 800px) {
   .cardContainer {
     width: 100%;
-    
   }
   .card {
     min-width: 40px;
@@ -402,7 +406,7 @@
   }
   .cartTotalCheckout {
     position: fixed;
-    bottom: 0px; 
+    bottom: 0px;
   }
 }
 

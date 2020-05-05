@@ -61,7 +61,7 @@ export default function CartPage(props) {
       <div className="cartCard">
         <div
           className="cartCardImageContainer"
-          style={{ backgroundImage: `url(${product.img})` }}
+          style={{ backgroundImage: `url(${product.image})` }}
         >
           <button onClick={() => deleteItem(product.id)}>
             <CancelIcon fontSize="medium" />
@@ -70,7 +70,7 @@ export default function CartPage(props) {
         <div className="cartCardDescription">
           <div>
             <p className="cartCardCurrency">{Currency(product.price)}</p>
-            <p className="cartCardName"> {product.name.toUpperCase()}</p>
+            <p className="cartCardName"> {product.product_name.toUpperCase()}</p>
             <p className="cartCartOption">
               {product.choice ? product.choice : ""}
             </p>
@@ -88,14 +88,6 @@ export default function CartPage(props) {
               // onMouseDown={() => editQuantity(product.id, quantity || product.id)}
               name="password"
             />
-
-            {/* <button
-              onClick={() => {
-                editQuantity(product.id, 3);
-              }}
-            >
-              {product.quantity}
-            </button> */}
           </form>
         </div>
       </div>

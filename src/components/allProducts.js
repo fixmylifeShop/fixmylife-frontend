@@ -7,51 +7,54 @@ export default function AllProducts(props) {
   let products = props.products;
   if (props.search) {
     products = props.products.filter((obj) => {
-      return obj.name.toLowerCase().indexOf(props.search.toLowerCase()) !== -1;
+      return obj.product_name.toLowerCase().indexOf(props.search.toLowerCase()) !== -1;
     });
   }
 
   const card = (product) => {
-    return (
-      <Link
-        className="card"
-        to={{ pathname: `/product/${product.id}`, state: { product: "hello" } }}
-      >
-        <div className="imgcontainer">
-          <img src={product.img} className="cardImg" alt="product" />
-          <div className="hover-message">Shop now</div>
-        </div>
-        <p>{Currency(product.price)}</p>
-        <p> {product.name.toUpperCase()}</p>
-      </Link>
-    );
+    if (product) {
+      return (
+        <Link
+          className="card"
+          to={{
+            pathname: `/product/${product.id}`,
+            state: { product: "hello" },
+          }}
+        >
+          <div className="imgcontainer">
+            <img src={product.image} className="cardImg" alt="product" />
+            <div className="hover-message">Shop now</div>
+          </div>
+          <p>{Currency(product.price)}</p>
+          <p> {product.product_name.toUpperCase()}</p>
+        </Link>
+      );
+    }
   };
-  console.log(
-    products.map((product) => {
-      return card(product);
-    })
-  );
+  // console.log(
+  //   products.map((product) => {
+  //     return card(product);
+  //   })
+  // );
 
-  console.log(
-    props.search &&
-      props.products.filter((obj) => {
-        return (
-          obj.name.toLowerCase().indexOf(props.search.toLowerCase()) !== -1
-        );
-      }).length
-  );
+  // console.log(
+  //   props.search &&
+  //     props.products.filter((obj) => {
+  //       return (
+  //         obj.product_name.toLowerCase().indexOf(props.search.toLowerCase()) !== -1
+  //       );
+  //     }).length
+  // );
   const pageLimit = () => {
     if (props.slice) {
       return products.slice(0, props.slice).map((product) => {
         return card(product);
       });
     }
-    if (products.length == 0) {
+    if (products.length === 0) {
       return (
         <div className="cartContainer">
-          <p className="emptyCartText">
-            No products found.
-          </p>
+          <p className="emptyCartText">No products found.</p>
         </div>
       );
     } else {
@@ -61,5 +64,5 @@ export default function AllProducts(props) {
     }
   };
 
-  return <div className="cardContainer">{pageLimit()}</div>;
+  return <div className="cardContainer">{products ? pageLimit() : ""}</div>;
 }
