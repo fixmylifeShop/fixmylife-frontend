@@ -13,8 +13,9 @@ export default function IndividualProductPage(props) {
     axios
       .get(`${process.env.REACT_APP_DOMAIN_NAME}/shops/products/${id}`)
       .then((res) => {
+        console.log(res.data)
         setProduct(res.data);
-        setImage(res.data.image[0].image);
+        setImage(res.data.image);
       });
   }
 
@@ -25,7 +26,7 @@ export default function IndividualProductPage(props) {
       });
       props.addToCart(props.cart, true);
     } else {
-      product.image = product.image[0].image;
+      // product.image = product.image[0].image;
       product.quantity = 1;
       props.addToCart([...props.cart, product], true);
     }
