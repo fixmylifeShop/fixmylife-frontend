@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import MobileMenu from "./mobileMenu";
 import { Link, useHistory } from "react-router-dom";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import SearchIcon from "@material-ui/icons/Search";
@@ -12,8 +12,8 @@ export default function Header(props) {
 
   const onChange = (e) => {
     // if (e.target.value !== "") {
-      props.setSearch(e.target.value);
-    // } 
+    props.setSearch(e.target.value);
+    // }
   };
 
   const submitSearch = (e) => {
@@ -40,7 +40,12 @@ export default function Header(props) {
             <img src={fmllogo} alt="logo" className="App-logo" />
           </Link>
         </div>
-
+        <div className="mobileNavMenu">
+          <MobileMenu
+            onChange={onChange}
+            itemsCount={props.cartInfo.itemsCount}
+          />
+        </div>
         {/* <div className="navLeftContent navContentWidth"> */}
 
         <div class="navContentWidth navLeftContent ">
@@ -74,9 +79,7 @@ export default function Header(props) {
           </Link>
         </div>
       </nav>
-      <div>
-    
-      </div>
+      <div></div>
     </header>
   );
 }

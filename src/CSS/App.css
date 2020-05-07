@@ -503,9 +503,34 @@
 }
 
 @media only screen and (max-width: 800px) {
+  .productContainer {
+    margin: -250px auto 100px auto;
+  }
+  .productInfoContainer {
+    margin-top: 30px;
+  }
 }
 
 @media only screen and (max-width: 670px) {
+  .productContainer {
+    flex-direction: column;
+  }
+  .productContainer {
+    margin: 100px auto 100px auto;
+    padding-bottom:30px;
+    max-height: 200%;
+  }
+  .productInfoContainer {
+    margin-top: 30px;
+    width: 100%;
+    height: auto
+  }
+  .productImageContainer {
+    width: 100%;
+    max-height: 80%;
+    border: none;
+    
+  }
 }
 
 /* contact form ---------------- */

@@ -56,7 +56,7 @@ export default function IndividualProductPage(props) {
   // };
   return (
     <div>
-      <Banner title=" " />
+      <Banner title="  " />
       <div className="productContainer">
         <div className="productImageContainer">
           <img src={image} alt="product" />
