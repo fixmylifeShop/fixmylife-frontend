@@ -69,7 +69,7 @@ export default function Header(props) {
 
           <Link className="App-link" to="/cart">
             <ShoppingCartOutlinedIcon fontSize="small" />{" "}
-            {props.itemCount + " "}
+            {props.cartInfo.itemsCount + " "}
             ITEMS
           </Link>
         </div>

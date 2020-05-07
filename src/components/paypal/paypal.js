@@ -56,7 +56,7 @@ let history = useHistory();
       .then(response => {
         props.handleClose()
         console.log(response);
-        localStorage.removeItem("cart")
+        // localStorage.removeItem("cart")
         props.setPurchaseComplete(true)
         // history.push("/products")
         // alert(`
@@ -71,6 +71,7 @@ let history = useHistory();
 
   const onError = (error) => {
     props.handleClose()
+    console.log(error);
     alert ('Payment with PayPal was not made, please try again.' );
   };
 
