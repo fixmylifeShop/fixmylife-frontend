@@ -24,7 +24,7 @@ function App() {
   const [search, setSearch] = useState(false);
   let history = useHistory();
   const { pathname } = useLocation();
-  console.log("cart", cart);
+  // console.log("cart", cart);
   if (!products) {
     axios
       .get(
@@ -43,7 +43,7 @@ function App() {
     getTotal(cart);
   }, [pathname]);
 
-  console.log(cartInfo);
+  // console.log(cartInfo);
   const getTotal = (e) => {
     let subtotal = 0;
     let itemsCount = 0;
@@ -59,11 +59,10 @@ function App() {
     axiosWithAuth()
       .get("/cart/")
       .then((res) => {
-        if (!res.data.message) {
-          setCart(res.data);
+          setCart(res.data.cart);
           console.log(res.data);
-          getTotal(res.data);
-        }
+          getTotal(res.data.cart);
+        
       })
       .catch((err) => console.log(err));
   };
@@ -72,6 +71,8 @@ function App() {
     axiosWithAuth()
       .post("/cart/", update)
       .then((res) => {
+        console.log(res)
+        localStorage.setItem("cart", res.data.token)
         getCart();
         // setCartChange(true);
         if (push) {

@@ -6,14 +6,13 @@ import { useHistory } from "react-router-dom";
 import CancelIcon from "@material-ui/icons/Cancel";
 import PaypalCheckoutButton from "../paypal/paypal";
 import Dialog from "@material-ui/core/Dialog";
-import { axiosWithAuth } from "../../components/config/axiosConfig";
-
+import ItemCard from "../cart/itemCard";
 export default function CartPage(props) {
   const [quantity, setQuantity] = useState();
   const [open, setOpen] = useState(false);
   const [purchaseComplete, setPurchaseComplete] = useState();
   let history = useHistory();
-  let subtotal = parseInt(props.cartInfo.subtotal)
+  let subtotal = parseInt(props.cartInfo.subtotal);
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -34,11 +33,13 @@ export default function CartPage(props) {
   };
   const deleteItem = (id) => {
     let array = editCart(id);
+    console.log(array);
     props.addToCart(array);
   };
 
   const handleChange = (e) => {
     setQuantity(e.target.value);
+    // console.log(e.target.value)
     // editQuantity(id, e.target.value)
   };
   const editQuantity = (id, count) => {
@@ -49,8 +50,8 @@ export default function CartPage(props) {
       } else {
         props.cart.map((item) => {
           if (item.id === id) {
+            item.quantity = num;
           }
-          item.quantity = num;
         });
         props.addToCart(props.cart);
       }
@@ -72,7 +73,6 @@ export default function CartPage(props) {
           <div>
             <p className="cartCardCurrency">{Currency(product.price)}</p>
             <p className="cartCardName">
-              {" "}
               {product.product_name.toUpperCase()}
             </p>
             <p className="cartCartOption">
@@ -83,7 +83,10 @@ export default function CartPage(props) {
         <div className="cartCardQuantityContainer">
           <form
             className="quantityContainer"
-            onSubmit={() => editQuantity(product.id, quantity || product.id)}
+            onSubmit={(e) => {
+              e.preventDefault();
+              console.log(e)
+              editQuantity(product.id, quantity || product.id)}}
           >
             <span>QTY. </span>
             <input
@@ -100,6 +103,15 @@ export default function CartPage(props) {
     if (props.cart.length > 0) {
       return props.cart.map((product) => {
         return card(product);
+        // return (
+        //   <ItemCard
+        //     handleChange={handleChange}
+        //     quantity
+        //     deleteItem={deleteItem}
+        //     editQuantity={editQuantity}
+        //     product={product}
+        //   />
+        // );
       });
     }
     if (purchaseComplete) {
@@ -125,9 +137,7 @@ export default function CartPage(props) {
       <div className="cartContainer">
         {cartContent()}
         <div className={props.cart.length > 0 ? "cartTotalCheckout" : "hidden"}>
-          <div className="cartSubtotal">
-            SUBTOTAL {Currency(subtotal)}
-          </div>
+          <div className="cartSubtotal">SUBTOTAL {Currency(subtotal)}</div>
           <div className="cartOptions">
             <button
               onClick={() => {

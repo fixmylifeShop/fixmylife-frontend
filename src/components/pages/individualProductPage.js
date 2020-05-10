@@ -3,6 +3,8 @@ import Banner from "../banner.js";
 import { useParams, useHistory } from "react-router-dom";
 import currency from "../currency";
 import axios from "axios";
+import { makeStyles } from '@material-ui/core/styles';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 export default function IndividualProductPage(props) {
   const [product, setProduct] = useState(false);
@@ -13,7 +15,7 @@ export default function IndividualProductPage(props) {
     axios
       .get(`${process.env.REACT_APP_DOMAIN_NAME}/shops/products/${id}`)
       .then((res) => {
-        console.log(res.data)
+        console.log(res.data);
         setProduct(res.data);
         setImage(res.data.image);
       });
@@ -32,51 +34,32 @@ export default function IndividualProductPage(props) {
     }
   };
 
-  // useEffect(() => {
-  //   // if (product.options && !selectOption) {
-  //   //   setSelectOption(0);
-  //   // }
-
-  // });
-
-  // const options = () => {
-  //   if (product.options && product.options.length > 1) {
-  //     const options = product.options;
-  //     return (
-  //       <select onChange={(event) => setSelectOption(event.target.value)}>
-  //         {options.map((choice, index) => {
-  //           return (
-  //             <option value={index}>
-  //               {choice[0]} {choice[1] ? " - " + currency(choice[1]) : ""}
-  //             </option>
-  //           );
-  //         })}
-  //       </select>
-  //     );
-  //   }
-  // };
   return (
     <div>
       <Banner title="  " />
-      <div className="productContainer">
-        <div className="productImageContainer">
-          <img src={image} alt="product" />
-        </div>
-
-        <div className="productInfoContainer">
-          <div className="product-price-title">
-            <p className="product-price">{currency(product.price)}</p>
-            <p className="product-name">
-              {product && product.product_name.toUpperCase()}
-            </p>
+      {product ? (
+        <div className="productContainer">
+          <div className="productImageContainer">
+            {image ? <img src={image} alt="product" /> : (<CircularProgress />)}
           </div>
-          {/* {options()} */}
-          <button className="addToCartButton" onClick={addToCart}>
-            ADD TO CART
-          </button>
-          <div className="descriptionContainer">{product.description}</div>
+
+          <div className="productInfoContainer">
+            <div className="product-price-title">
+              <p className="product-price">{currency(product.price)}</p>
+              <p className="product-name">
+                {product.product_name.toUpperCase()}
+              </p>
+            </div>
+            {/* {options()} */}
+            <button className="addToCartButton" onClick={addToCart}>
+              ADD TO CART
+            </button>
+            <div className="descriptionContainer">{product.description}</div>
+          </div>
         </div>
-      </div>
+      ) : (
+        " loading "
+      )}
     </div>
   );
 }
