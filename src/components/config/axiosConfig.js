@@ -14,6 +14,7 @@ function axiosWithAuth() {
       Authorization: `${token}`,
       visited: `${visited}`,
       cart: `${cart}`,
+      shop_id: process.env.REACT_APP_USER_ID
     },
   });
 }

@@ -10,7 +10,7 @@ import ItemCard from "../cart/itemCard";
 export default function CartPage(props) {
   const [quantity, setQuantity] = useState();
   const [open, setOpen] = useState(false);
-  const [purchaseComplete, setPurchaseComplete] = useState();
+  const [purchaseComplete, setPurchaseComplete] = useState(false);
   let history = useHistory();
   let subtotal = parseInt(props.cartInfo.subtotal);
   const handleClickOpen = () => {
@@ -72,9 +72,7 @@ export default function CartPage(props) {
         <div className="cartCardDescription">
           <div>
             <p className="cartCardCurrency">{Currency(product.price)}</p>
-            <p className="cartCardName">
-              {product.product_name.toUpperCase()}
-            </p>
+            <p className="cartCardName">{product.product_name.toUpperCase()}</p>
             <p className="cartCartOption">
               {product.choice ? product.choice : ""}
             </p>
@@ -85,8 +83,9 @@ export default function CartPage(props) {
             className="quantityContainer"
             onSubmit={(e) => {
               e.preventDefault();
-              console.log(e)
-              editQuantity(product.id, quantity || product.id)}}
+              console.log(e);
+              editQuantity(product.id, quantity || product.id);
+            }}
           >
             <span>QTY. </span>
             <input
@@ -100,33 +99,69 @@ export default function CartPage(props) {
     );
   };
   const cartContent = () => {
-    if (props.cart.length > 0) {
-      return props.cart.map((product) => {
-        return card(product);
-        // return (
-        //   <ItemCard
-        //     handleChange={handleChange}
-        //     quantity
-        //     deleteItem={deleteItem}
-        //     editQuantity={editQuantity}
-        //     product={product}
-        //   />
-        // );
-      });
-    }
     if (purchaseComplete) {
       return (
-        <p className="emptyCartText">
-          Thank your for your order.
-          {/* <Link to="/products"> Return to </Link>. */}
-        </p>
+        <div className="cartContainer">
+          <p className="emptyCartText">
+            Thank your for your order.
+            {/* <Link to="/products"> Return to </Link>. */}
+          </p>
+        </div>
       );
+    }
+    if (props.cart.length > 0 && localStorage.getItem("cart")) {
+      return (
+        <div className="cartContainer">
+          {props.cart.map((product) => {
+            return card(product);
+          })}
+          <div
+            className={props.cart.length > 0 ? "cartTotalCheckout" : "hidden"}
+          >
+            <div className="cartSubtotal">SUBTOTAL {Currency(subtotal)}</div>
+            <div className="cartOptions">
+              <button
+                onClick={() => {
+                  history.push("/products");
+                }}
+              >
+                CONTINUE SHOPPING
+              </button>
+              {/* <CustomizedDialogs total={props.cart.subtotal} /> */}
+              <button onClick={handleClickOpen}>CHECKOUT</button>
+              <Dialog
+                onClose={handleClose}
+                // aria-labelledby="customized-dialog-title"
+                open={open}
+              >
+                <PaypalCheckoutButton
+                  total={subtotal}
+                  handleClose={handleClose}
+                  cart={props.cart}
+                  setPurchaseComplete={setPurchaseComplete}
+                />
+              </Dialog>
+            </div>
+          </div>
+        </div>
+      );
+      // return (
+      //   <ItemCard
+      //     handleChange={handleChange}
+      //     quantity
+      //     deleteItem={deleteItem}
+      //     editQuantity={editQuantity}
+      //     product={product}
+      //   />
+      // );
     } else {
       return (
-        <p className="emptyCartText">
-          Your cart is empty! Sounds like a good time to
-          <Link to="/products"> start shopping</Link>.
-        </p>
+        <div className="cartContainer">
+          <p className="emptyCartText">
+            Your cart is empty! Sounds like a good time to
+            <Link to="/products"> start shopping</Link>.
+          </p>
+        </div>
       );
     }
   };
@@ -134,34 +169,8 @@ export default function CartPage(props) {
   return (
     <div>
       <Banner title="Cart" />
-      <div className="cartContainer">
-        {cartContent()}
-        <div className={props.cart.length > 0 ? "cartTotalCheckout" : "hidden"}>
-          <div className="cartSubtotal">SUBTOTAL {Currency(subtotal)}</div>
-          <div className="cartOptions">
-            <button
-              onClick={() => {
-                history.push("/products");
-              }}
-            >
-              CONTINUE SHOPPING
-            </button>
-            {/* <CustomizedDialogs total={props.cart.subtotal} /> */}
-            <button onClick={handleClickOpen}>CHECKOUT</button>
-            <Dialog
-              onClose={handleClose}
-              // aria-labelledby="customized-dialog-title"
-              open={open}
-            >
-              <PaypalCheckoutButton
-                total={subtotal}
-                handleClose={handleClose}
-                setPurchaseComplete={setPurchaseComplete}
-              />
-            </Dialog>
-          </div>
-        </div>
-      </div>
+
+      {cartContent()}
     </div>
   );
 }

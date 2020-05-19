@@ -3,9 +3,9 @@ import Banner from "../banner.js";
 import { useParams, useHistory } from "react-router-dom";
 import currency from "../currency";
 import axios from "axios";
-import { makeStyles } from '@material-ui/core/styles';
-import CircularProgress from '@material-ui/core/CircularProgress';
-
+import { makeStyles } from "@material-ui/core/styles";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import "../../CSS/individualProductPage.css";
 export default function IndividualProductPage(props) {
   const [product, setProduct] = useState(false);
   const [image, setImage] = useState(false);
@@ -17,6 +17,7 @@ export default function IndividualProductPage(props) {
       .then((res) => {
         console.log(res.data);
         setProduct(res.data);
+        // console.log(res.data.images[0].image);
         setImage(res.data.image);
       });
   }
@@ -40,7 +41,7 @@ export default function IndividualProductPage(props) {
       {product ? (
         <div className="productContainer">
           <div className="productImageContainer">
-            {image ? <img src={image} alt="product" /> : (<CircularProgress />)}
+            {image ? <img src={image} alt="product" /> : <CircularProgress />}
           </div>
 
           <div className="productInfoContainer">

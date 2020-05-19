@@ -43,6 +43,10 @@ function App() {
     getTotal(cart);
   }, [pathname]);
 
+  // useEffect(() => {
+  //   getCart();
+  // }, [purchaseComplete]);
+
   // console.log(cartInfo);
   const getTotal = (e) => {
     let subtotal = 0;
@@ -59,10 +63,9 @@ function App() {
     axiosWithAuth()
       .get("/cart/")
       .then((res) => {
-          setCart(res.data.cart);
-          console.log(res.data);
-          getTotal(res.data.cart);
-        
+        setCart(res.data.cart);
+        console.log(res.data);
+        getTotal(res.data.cart);
       })
       .catch((err) => console.log(err));
   };
@@ -71,8 +74,8 @@ function App() {
     axiosWithAuth()
       .post("/cart/", update)
       .then((res) => {
-        console.log(res)
-        localStorage.setItem("cart", res.data.token)
+        console.log(res);
+        localStorage.setItem("cart", res.data.token);
         getCart();
         // setCartChange(true);
         if (push) {
