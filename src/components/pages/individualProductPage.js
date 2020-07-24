@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Banner from "../banner.js";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams} from "react-router-dom";
 import currency from "../currency";
 import axios from "axios";
-import { makeStyles } from "@material-ui/core/styles";
+// import { makeStyles } from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import "../../CSS/individualProductPage.css";
 export default function IndividualProductPage(props) {
@@ -24,7 +24,7 @@ export default function IndividualProductPage(props) {
 
   const addToCart = (e) => {
     if (props.cart.find((item) => item.id === product.id)) {
-      props.cart.find((item) => {
+      props.cart.forEach((item) => {
         item.id === product.id && item.quantity++;
       });
       props.addToCart(props.cart, true);

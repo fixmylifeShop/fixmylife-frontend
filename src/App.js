@@ -40,7 +40,7 @@ function App() {
     window.scrollTo(0, 0);
     axiosViewsSession();
     getCart();
-    getTotal(cart);
+    // getTotal(cart);
   }, [pathname]);
 
   // useEffect(() => {

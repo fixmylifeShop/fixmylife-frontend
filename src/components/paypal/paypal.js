@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import paypal from "paypal-checkout";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import { axiosWithAuth } from "../config/axiosConfig";
 /*
  * By AFelipe MX  @afelipelc

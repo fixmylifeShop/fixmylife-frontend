@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 import CancelIcon from "@material-ui/icons/Cancel";
 import PaypalCheckoutButton from "../paypal/paypal";
 import Dialog from "@material-ui/core/Dialog";
-import ItemCard from "../cart/itemCard";
+// import ItemCard from "../cart/itemCard";
 export default function CartPage(props) {
   const [quantity, setQuantity] = useState();
   const [open, setOpen] = useState(false);
@@ -23,7 +23,7 @@ export default function CartPage(props) {
   const editCart = (id) => {
     let array = [];
     props.cart
-      .filter((item) => item.id != id)
+      .filter((item) => item.id !== id)
       .forEach((item) => {
         if (item) {
           array.push(item);
@@ -48,7 +48,7 @@ export default function CartPage(props) {
       if (count <= 0) {
         deleteItem(id);
       } else {
-        props.cart.map((item) => {
+        props.cart.forEach((item) => {
           if (item.id === id) {
             item.quantity = num;
           }

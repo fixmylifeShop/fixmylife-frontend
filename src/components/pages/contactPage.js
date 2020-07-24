@@ -21,17 +21,17 @@ export default function ContactPage() {
   const send = (e) => {
     e.preventDefault();
     if (
-      contactForm.name == "" ||
-      contactForm.email == "" ||
-      contactForm.subject == "" ||
-      contactForm.message == ""
+      contactForm.name === "" ||
+      contactForm.email === "" ||
+      contactForm.subject === "" ||
+      contactForm.message === ""
     ) {
       window.scrollTo(0, 0);
       setError(true);
     } else {
       axios
         .post(
-          `https://fixmylife-next-api.herokuapp.com/api/mailer/`,
+          `${process.env.REACT_APP_DOMAIN_NAME}/mailer/`,
           contactForm
         )
         .then(

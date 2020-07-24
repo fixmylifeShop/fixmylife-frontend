@@ -68,7 +68,7 @@ export default function MobileMenu(props) {
           </Link>
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          <a href="https://www.duranirving.com" target="_blank" className="mobileBrand">
+          <a href="https://www.duranirving.com" className="mobileBrand">
             BY IRVING DURAN
           </a>
         </MenuItem>
